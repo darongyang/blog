@@ -2,17 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='https://www.hitsz.edu.cn/index.html'>🏫Harbin Institute of Technology, Shenzhen</a>. 🎓Master's candidate. 📍Shenzhen, China. 📧darongyang@foxmail.com.
 
 profile:
   align: right
   image: gucao.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>📧 darongyang@foxmail.com</p>
-    <p>🏙 Shenzhen, China</p>
-    <p>🎓 Matser's candidate</p>
-    <p>🏫 Harbin Institute of Technology, Shenzhen</p>
+    <p>A paper a day, the reject away~</p>
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
