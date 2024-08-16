@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://darongyang.github.io/sitemap.xml
+Sitemap: https://darongyang.github.io/blog/sitemap.xml
