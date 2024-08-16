@@ -63,6 +63,9 @@ permissions:
 jobs:
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -88,8 +91,10 @@ jobs:
         run: |
           npm install -g purgecss
           purgecss -c purgecss.config.js
+      - name: Upload artifact
+        # Automatically uploads an artifact from the './_site' directory by default
+        uses: actions/upload-pages-artifact@v3
       - name: Deploy 🚀
-        if: github.event_name != 'pull_request'
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/deploy-pages@v4
         with:
           folder: _site
