@@ -2,14 +2,17 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.hitsz.edu.cn/index.html'>🏫Harbin Institute of Technology, Shenzhen</a>. 🎓Master's candidate. 📍Shenzhen, China. 📧darongyang@foxmail.com.
+subtitle: A paper a day, the reject away~
 
 profile:
   align: right
   image: gucao.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>A paper a day, the reject away~</p>
+    <p><a href='https://www.hitsz.edu.cn/index.html'>🏫Harbin Institute of Technology, Shenzhen</a></p>
+    <p>🎓Master's candidate</p>
+    <p>📍Shenzhen, China</p>
+    <p>📧darongyang@foxmail.com</p>
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
