@@ -10,7 +10,7 @@ images:
   slider: true
 ---
 
-Welcome to my First blog! This blog is just for start, for a test and for fun!
+Welcome to my First blog! This blog is just for start, for test and for fun!
 
 欢迎来到我的第一条blog！这条blog是开始，是测试，用于娱乐！
 
@@ -20,7 +20,7 @@ Refer to this website for blog tutorial references: <a href="https://alshedivat.
 
 ## Pictures
 
-I am a <u>Honkai: Star Rail</u> lover. My favorite character is this game is firefly, as shown in the following picture.
+I am a <u>Honkai: Star Rail</u> lover. My favorite character in this game is Firefly, as shown in the following picture.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
