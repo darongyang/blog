@@ -8,19 +8,24 @@ categories: sample-posts
 featured: true
 ---
 
+Welcome to my First blog! This blog is just for start, for a test and for fun!
+
+欢迎来到我的第一条blog！这条blog是开始，是测试，用于娱乐！
+
 ## Inline Links
 
 Refer to this website for blog tutorial references: <a href="https://alshedivat.github.io/al-folio/blog/">post online | alshedivat.io</a> and <a href="https://github.com/alshedivat/al-folio/blob/master/_posts">post source | alshedivat github </a>
 
 ## Pictures
 
-This post is just for a test and for fun!
-
 I am a <u>Honkai: Star Rail</u> lover. My favorite character is this game is firefly, as shown in the following picture.
 
-<div class="row">
+<div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/posts/honkai.png" title="honkai" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/gujian3.png" title="gujian3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -29,9 +34,11 @@ I am a <u>Honkai: Star Rail</u> lover. My favorite character is this game is fir
 
 Furthermore, I am also a  <u>Gujian 3</u> lover, fond of Yun Wuyue, Bei Luo, Cen Ying, etc.
 
+By the way, I am a <u>Fall Guys</u> player.
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/gujian3.png" title="gujian3" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/posts/fallguys.png" title="gujian3" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
