@@ -1,15 +1,12 @@
 ---
 layout: post
-title: Post Start and a Simple Test
+title: Post start and test
 date: 2024-08-17 15:59:00
 description: an example of a blog post with some test
 tags: start
 categories: sample-posts
 featured: true
 ---
-
-
-
 ## Post Tutorial
 
 Refer to this website for blog tutorial references: TODO
