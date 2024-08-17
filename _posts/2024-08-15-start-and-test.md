@@ -24,7 +24,7 @@ I am a <u>Honkai: Star Rail</u> lover. My favorite character is this game is fir
     </div>
 </div>
 <div class="caption">
-    So sweet, isn't it?.
+    So romantic, isn't it?.
 </div>
 
 Furthermore, I am also a  <u>Gujian 3</u> lover, fond of Yun Wuyue, Bei Luo, Cen Ying, etc.
@@ -35,12 +35,14 @@ Furthermore, I am also a  <u>Gujian 3</u> lover, fond of Yun Wuyue, Bei Luo, Cen
     </div>
 </div>
 
-## Tables
+## Tables & Emoji
 
-The game i play and degree of fondness.
+I mainly play the following games.
 
 | Game | Degree of fondness |
 | :----------- | :------------  |
-| Honkai: Star Rail       |   5     |
-| Gujian 3       |    5    |
-| Fallguys       |    3    |
+| Honkai: Star Rail       |   :star::star::star::star::star:     |
+| Gujian 3       |    :star::star::star::star::star:    |
+| Fall Guys       |    :star::star::star:    |
+
+Search more markdown emojis by <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">Emoji Cheat Sheet</a>
