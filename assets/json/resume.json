@@ -1,18 +1,18 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Darong Yang",
+    "label": "Master's candidate",
     "image": "",
-    "email": "albert@einstein.de",
+    "email": "darongyang@foxmail.com",
     "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "url": "https://darongyang.github.io/blog",
+    "summary": "A Chinese master's candidate who is interested in eBPF, file systems, and Flash storage",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "",
+      "postalCode": "",
+      "city": "Shenzhen",
+      "countryCode": "China",
+      "region": "Guangdong"
     },
     "profiles": [
       {
@@ -47,24 +47,31 @@
   ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "institution": "Harbin Institute of Technology, Shenzhen",
+      "location": "Shenzhen, China",
+      "url": "http://en.hitsz.edu.cn/",
+      "area": "Computer Technology",
+      "studyType": "Master's candidate",
+      "startDate": "2024-09",
+      "endDate": "now"
+    },
+    {
+      "institution": "Harbin Institute of Technology, Shenzhen",
+      "location": "Shenzhen, China",
+      "url": "http://en.hitsz.edu.cn/",
+      "area": "Computer Science and Technology",
+      "studyType": "",
+      "startDate": "2020-09",
+      "endDate": "2024-07"
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": " The First Prize in the Chinese College Students' Computer System Capability Competition 2023",
+      "date": "2023-08-23",
+      "awarder": "Computer Education Research Association of Chinese Universities",
+      "url": "https://compiler.educg.net/#/oldDetail?name=2023%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B%E5%A4%A7%E8%B5%9B%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E8%B5%9B-%E5%8A%9F%E8%83%BD%E6%8C%91%E6%88%98%E8%B5%9B",
+      "summary": "We implement BoesFS, a file system sandbox based on eBPF, which features excellent and flexible file access control capabilities, and deploy it to FaaS."
     }
   ],
   "certificates": [

@@ -12,7 +12,7 @@ profile:
     <p>📍&nbsp;Shenzhen, China</p>
     <p>📧 darongyang@foxmail.com</p>
     <p>🎓 Master's candidate</p>
-    <p>🏫 <a href='https://www.hitsz.edu.cn/index.html'>HITSZ</a></p>
+    <p>🏫 <a href='https://www.hitsz.edu.cn/index.html'>Harbin Institute of Technology, Shenzhen</a></p>
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
