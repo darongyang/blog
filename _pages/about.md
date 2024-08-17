@@ -9,10 +9,10 @@ profile:
   image: gucao.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>📍&nbsp;&nbsp;Shenzhen, China</p>
-    <p>📧&nbsp;darongyang@foxmail.com</p>
-    <p>🎓&nbsp;Master's candidate</p>
-    <p><a href='https://www.hitsz.edu.cn/index.html'>🏫&nbsp;HITSZ</a></p>
+    <p>📍&nbsp;Shenzhen, China</p>
+    <p>📧 darongyang@foxmail.com</p>
+    <p>🎓 Master's candidate</p>
+    <p>🏫 <a href='https://www.hitsz.edu.cn/index.html'>HITSZ</a></p>
 
 news: false # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
