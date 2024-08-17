@@ -18,8 +18,8 @@ This post is just for a test and for fun!
 
 I am a *Honkai: Star Rail* lover. My favorite character is this game is firefly, as shown in the following picture.
 
-![](./images/honkai.png)
+![](../assets/img/posts/honkai.png)
 
 Furthermore, I am also a  *Gujian 3* lover, fond of Yun Wuyue, Bei Luo, Cen Ying, etc.
 
-![](./images/gujian3.jpg)
+![](../assets/img/posts/gujian3.jpg)
