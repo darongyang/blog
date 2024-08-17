@@ -8,18 +8,30 @@ categories: sample-posts
 featured: true
 ---
 
-## Post Tutorial
+## Inline Links
 
-Refer to this website for blog tutorial references: [blog | You R. Name (alshedivat.github.io)](https://alshedivat.github.io/al-folio/blog/)
+Refer to this website for blog tutorial references: <a href="https://alshedivat.github.io/al-folio/blog/">blog | alshedivat</a>
 
-## Start & Test
+## Pictures
 
 This post is just for a test and for fun!
 
-I am a *Honkai: Star Rail* lover. My favorite character is this game is firefly, as shown in the following picture.
+I am a <u>Honkai: Star Rail</u> lover. My favorite character is this game is firefly, as shown in the following picture.
 
-![](../assets/img/posts/honkai.png)
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/honkai.png" title="honkai" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    So sweet, isn't it?.
+</div>
 
-Furthermore, I am also a  *Gujian 3* lover, fond of Yun Wuyue, Bei Luo, Cen Ying, etc.
+Furthermore, I am also a  <u>Gujian 3</u> lover, fond of Yun Wuyue, Bei Luo, Cen Ying, etc.
 
-![](../assets/img/posts/gujian3.jpg)
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/gujian3.png" title="gujian3" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
