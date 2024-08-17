@@ -10,7 +10,7 @@ featured: true
 
 ## Inline Links
 
-Refer to this website for blog tutorial references: <a href="https://alshedivat.github.io/al-folio/blog/">blog | alshedivat</a>
+Refer to this website for blog tutorial references: <a href="https://alshedivat.github.io/al-folio/blog/">post online | alshedivat.io</a> and <a href="https://github.com/alshedivat/al-folio/blob/master/_posts">post source | alshedivat github </a>
 
 ## Pictures
 
@@ -35,3 +35,12 @@ Furthermore, I am also a  <u>Gujian 3</u> lover, fond of Yun Wuyue, Bei Luo, Cen
     </div>
 </div>
 
+## Tables
+
+The game i play and degree of fondness.
+
+| Game | Degree of fondness |
+| :----------- | :------------  |
+| Honkai: Star Rail       |   5     |
+| Gujian 3       |    5    |
+| Fallguys       |    3    |
