@@ -9,7 +9,7 @@ profile:
   image: gucao.png
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p> 📍 Shenzhen, China</p>
+    <p>📍  Shenzhen, China</p>
     <p>📧 darongyang@foxmail.com</p>
     <p>🎓 Master's candidate</p>
     <p><a href='https://www.hitsz.edu.cn/index.html'>🏫 Harbin Institute of Technology, Shenzhen</a></p>
