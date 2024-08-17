@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Post start and test
+title: a post with start and test
 date: 2024-08-17 15:59:00
 description: an example of a blog post with some test
 tags: start
