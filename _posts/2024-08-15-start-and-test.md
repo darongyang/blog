@@ -6,6 +6,8 @@ description: an example of a blog post with some test
 tags: start
 categories: sample-posts
 featured: true
+images:
+  slider: true
 ---
 
 Welcome to my First blog! This blog is just for start, for a test and for fun!
