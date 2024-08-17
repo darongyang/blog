@@ -12,21 +12,12 @@ featured: true
 
 ## Post Tutorial
 
-Refer to this website for blog tutorial references: [blog | You R. Name (alshedivat.github.io)](https://alshedivat.github.io/al-folio/blog/)
+Refer to this website for blog tutorial references: TODO
 
-
-
-## Start & Test 
+## Start & Test
 
 This post is just for a test and for fun!
 
 I am a *Honkai: Star Rail* lover. My favorite character is this game is firefly, as shown in the following picture.
 
-
-
 Furthermore, I am also a  *Gujian 3* lover, fond of Yun Wuyue, Bei Luo, Cen Ying, etc.
-
-
-
-
-
