@@ -54,4 +54,24 @@ I mainly play the following games.
 | Gujian 3       |    :star::star::star::star::star:    |
 | Fall Guys       |    :star::star::star:    |
 
-Search more markdown emojis by <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">Emoji Cheat Sheet</a>
+> Search more markdown emojis by <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">Emoji Cheat Sheet</a>
+> Emoji can add fun to the posts. :-)
+
+## List and Line
+
+The city in China I have traveled to:  
+- Beijing
+- Shanghai
+- Hangzhou
+- Guangzhou
+- Changsha
+- Changchun
+- Shenzhen
+- Guiping
+- Zhanjiang
+
+<hr>
+
+The famous mountains I want to go:
+- [x] Changbai Mountain
+- [] Hua Mountain
