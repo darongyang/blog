@@ -173,10 +173,11 @@ external_sources:
     posts:
       - url: https://www.usenix.org/conference/fast24/presentation/panel-storage-systems
         published_date: 2024-02-27
+
   - name: AI Storage in THU
     posts:
        - url: https://mp.weixin.qq.com/s?__biz=MzUyMjgzMDc3OA==&mid=2247484221&idx=1&sn=178be8f47234054d95fd8f3bf3234b95&chksm=f86af62b029b105be59fafdb04fbb71dcf9a416024803886549cbc02f4304a9de82b19fa2aae&scene=126&sessionid=1724411627#rd
-       - published_date: 2024-08-22
+         published_date: 2024-08-22
 
   #   - name: medium.com
   #     rss_url: https://medium.com/@al-folio/feed
