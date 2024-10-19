@@ -1,7 +1,7 @@
 ---
 layout: post
 title: FEMU Timing Model Analysis
-date: 2024-10-19 21:34:00
+date: 2024-10-18 21:34:00
 description: an example of a blog post with some test
 tags: ssd-simulator
 categories: sample-posts
