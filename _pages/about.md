@@ -2,7 +2,8 @@
 layout: about
 title: about
 permalink: /
-subtitle: A paper a day, the reject away~
+# subtitle: A paper a day, the reject away~
+subtitle: New to Storage!
 
 profile:
   align: right
