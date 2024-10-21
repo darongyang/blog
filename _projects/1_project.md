@@ -1,6 +1,6 @@
 ---
 layout: page
-title: project 1
+title: Dapustor
 description: with background image
 img: assets/img/moments/2024-10-19-dpw/0.jpg
 importance: 1
