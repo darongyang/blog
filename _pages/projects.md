@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Moments
+title: moments
 permalink: /moments/
 description: Some important moments
 nav: true
