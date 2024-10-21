@@ -8,7 +8,7 @@ category: work
 related_publications: false
 ---
 
-2024年6月14日至6月16日有幸参加了ChinaSys24会议，地点在浙江杭州的之江饭店。
+2023年12月13日有幸参加了CCF青年论坛-浦江论道，地点在上海的华东师范大学。
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
