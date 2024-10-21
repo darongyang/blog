@@ -22,7 +22,7 @@ related_publications: false
     </div>
 </div>
 <div class="caption">
-    本次技术交流围绕了大模型的以存代算、混合内存管理、ZNS SSD技术等专题展开 .
+    本次Chinasys涵盖了系统领域各个方面，我主要关注了方天图形引擎、Flash存储和云计算等专题报告。会议外的Poster，我和eBPF独立开发者，Serverless上交学者进行了深入讨论。
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -30,7 +30,7 @@ related_publications: false
     </div>
 </div>
 <div class="caption">
-    交流的最后展开了专家互动研讨
+    ChinaSys24报到
 </div>
 
-本次技术交流见到了几位大牛，对内存、闪存、大模型等方向有了更清晰的认识。
+本次会议拓展了自己的视野，不仅局限于存储。
