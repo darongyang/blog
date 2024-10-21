@@ -22,7 +22,7 @@ related_publications: false
     </div>
 </div>
 <div class="caption">
-    本次技术交流围绕了大模型的以存代算、混合内存管理、ZNS SSD技术等专题展开 .
+    本次Workshop主要围绕了高密度闪存的挑战和发展方向展开。
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -30,7 +30,7 @@ related_publications: false
     </div>
 </div>
 <div class="caption">
-    交流的最后展开了专家互动研讨
+    Workshop的海报
 </div>
 
-本次技术交流见到了几位大牛，对内存、闪存、大模型等方向有了更清晰的认识。
+本次技术交流见到了《深入浅出SSD》的作者们，可计算存储公司ScaleFlux的技术负责和很多存储领域的顶尖学者。
