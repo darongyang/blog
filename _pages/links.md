@@ -1,5 +1,5 @@
 ---
-layout: about
+layout: page
 title: links
 permalink: /friendly-links/
 nav: true
