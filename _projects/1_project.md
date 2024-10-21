@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Dapustor
-description: with background image
+description: a technical exchange
 img: assets/img/moments/2024-10-19-dpw/0.jpg
 importance: 1
 category: work
@@ -30,9 +30,7 @@ related_publications: false
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    交流的最后展开了专家互动研讨
 </div>
-
-交流的最后展开了专家互动研讨。
 
 本次技术交流见到了几位大牛，对内存、闪存、大模型等方向有了更清晰的认识。
