@@ -59,9 +59,9 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 
 - `struct FemuCtrl`，整个femu的全局字段。
 - `struct NvmeRequest`，每个请求的相关字段。
-	- `int64_t stime`：请求的开始时间戳，表示何时开始处理该请求。
-	- `int64_t reqlat`：请求的时延（request latency），用于记录该请求的延迟。**`int64_t gcrt`**: 全局完成时间戳（global completion runtime）。（这个字段在femu里没有用到？）
-	- `int64_t expire_time`：请求的过期时间戳，用于模拟请求超时机制（to改）。
+    - `int64_t stime`：请求的开始时间戳，表示何时开始处理该请求。
+    - `int64_t reqlat`：请求的时延（request latency），用于记录该请求的延迟。**`int64_t gcrt`**: 全局完成时间戳（global completion runtime）。（这个字段在femu里没有用到？）
+    - `int64_t expire_time`：请求的过期时间戳，用于模拟请求超时机制（to改）。
 
 ## nand.h 和 nand.c
 
@@ -105,14 +105,64 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 
 **有关函数**
 
-- 函数`nvme_process_sq_io`
-该函数初始化一个`NvmeRequest *req`，这其中包括这个`req`的`cmd_opcode`、`stime`和`expire_time`等字段，后两个时间都为现在的qemu时间。
 - 函数`cmp_pri`、`get_pri`和`set_pri`
-从这几个函数可以看出，在队列的维护中，以`expire_time`字段作为请求的优先级。结束时间越大，优先级越高？（有点怪，不确定，再看看）
+从这几个函数可以看出，在队列的维护中，以`expire_time`字段作为请求的优先级。结束时间越大，优先级越高。
+
+nvme处理的poller`nvme_poller`：
+
+- 函数`nvme_process_sq_io`
+  
+该函数是请求队列的处理函数。
+
+**Step1:** 首先会从NVMe的请求队列取出I/O请求。
+
+**Step2:** 然后初始化一个`NvmeRequest *req`，这其中包括这个`req`的`cmd_opcode`、`stime`和`expire_time`等字段，后两个时间都为现在的时间`qemu_clock_get_ns`。
+
+**Step3:** 接着执行数据的传输：`nvme_io_cmd`->`n->ext_ops.io_cmd`->`nvme_rw`/`oc12_io_cmd`/`zns_io_cmd` -> `backend_rw`。不同的SSD分别实现了不同的数据传输的`io_cmd`（例如，没有FTL的`OCSSD`会在`oc12_io_cmd`里完成timing model，而`nvme_rw`则不会完成timing model，`BBSSD`会在自己的FTL里完成timing model）。
+
+**Step4:** 将取出的req插入到femu的请求队列`n->to_ftl`中。
+
+```c
+int rc = femu_ring_enqueue(n->to_ftl[index_poller], (void *)&req, 1);
+```
+
 - 函数`nvme_process_cq_cpl`
-这个函数负责时延模拟？
-- [ ] 究竟在哪里进行的时延delay？
-应该会借助`req->expire_time`进行时延设置。
+
+该函数是完成队列的处理函数。
+
+该函数中涉及几个重要的数据结构：`(FemuCtrl *)n->to_ftl[index_poller]`和`(FemuCtrl *)n->to_poller[index_poller]`、`n->cq[req->sq->sqid]`和`n->pq[index_poller]`。
+
+**Step1:** 从环形缓冲区中取出请求，并插入到优先队列中。
+
+`to_ftl`和`to_poller`是I/O请求的环形缓冲区，插入到优先队列前的一个过渡缓冲区。如果是黑盒模式`BBSSD`，则使用`to_poller`环形缓冲区；否则使用`to_ftl`环形缓冲区。
+
+`n->pq[index_poller]`是I/O请求的优先队列，按照`expire_time`作为优先级。
+
+**Step2:**  从优先队列依次取出请求，比较`req->expire_time`和现在的时间`now`，如果`now > req->expire_time`，则将`req`插入到完成队列`n->cq[req->sq->sqid]`中。如果超时太久（超过20000ns)，则进行记录。
+
+**Step3:** 标记对应的完成队列要进行中断`n->should_isr[req->sq->sqid] = true;`，并发送中断`nvme_isr_notify_io`。
+
+**为什么有两种缓冲区？**
+
+只有在`BBSSD`中同时使用到了上述两种环形缓冲区，即只有`BBSSD`使用了`to_poller`环形缓冲区。在函数`ftl_thread`中有：
+
+```c
+static void *ftl_thread(void *arg){
+    while ...
+        // 从to_ftl中取出req
+        rc = femu_ring_dequeue(ssd->to_ftl[i], (void *)&req, 1);
+        // 处理操作，执行黑盒SSD的FTL维护，并计算该操作的时延
+        switch (req->cmd.opcode) {
+            case NVME_CMD_WRITE:
+                lat = ssd_write(ssd, req); 
+            ...
+        }
+        // 处理完成后，获得Tenio，插入到to_poller队列
+        rc = femu_ring_enqueue(ssd->to_poller[i], (void *)&req, 1);
+}
+```
+
+我觉得这是因为，只有`BBSSD`会有FTL表。首先，对于所有SSD，I/O请求都先会插入到`to_ftl`缓冲区中。对于白盒SSD，无需对这些请求进行额外的FTL操作。但对于`BBSSD`则需要将这些位于`to_ftl`缓冲区的取出，进行FTL操作后，再放入新的`to_poller`缓冲区中。最后这些已经完成的I/O请求才会被进一步进行真正的时延模拟。
 
 ## Reference
 
