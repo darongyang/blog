@@ -92,14 +92,18 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 - 函数`advance_channel_timestmap`和 `advance_chip_timestamp`仅在oc12.c和oc20.c被调用了，暂不清楚为什么，不知道其他SSD怎么模拟的时延。
 - 这些通道和芯片时延的更新，都只是修改了全局结构体`struct FemuCtrl`的有关字段。
 
+
 ## oc12.c 和 ftl.c
 
 **有关函数**
 
 - 函数`oc12_advance_status`
-这个函数看起来就是oc12的时延模型函数。mark一下。看起来是根据操作类型设置了`req->expire_time`。
+
+这个函数是oc12的时延模型函数。按照上述时延模型，根据操作类型设置了`req->expire_time`。
+
 - 函数 `ssd_advance_status`
-这个函数看起来是bbssd的时延模型函数。
+  
+这个函数是bbssd的时延模型函数。
 
 ## nvme-io.c
 
