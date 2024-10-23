@@ -60,20 +60,26 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 - `struct FemuCtrl`，整个femu的全局字段。
 - `struct NvmeRequest`，每个请求的相关字段。
     - `int64_t stime`：请求的开始时间戳，表示何时开始处理该请求。
-    - `int64_t reqlat`：请求的时延（request latency），用于记录该请求的延迟。**`int64_t gcrt`**: 全局完成时间戳（global completion runtime）。（这个字段在femu里没有用到？）
+    - `int64_t reqlat`：请求的时延（request latency），用于记录该请求的延迟。
+    - `int64_t gcrt`: 全局完成时间戳（global completion runtime）。（这个字段在femu里没有用到？）
     - `int64_t expire_time`：请求的过期时间戳，用于模拟请求超时机制（to改）。
 
 ## nand.h 和 nand.c
 
 通过宏定义定义了闪存颗粒的时延，如`#define TLC_LOWER_PAGE_WRITE_LATENCY_NS   (820500)`。
+
 **有关结构体**
+
 - `struct NandFlashTiming`，维护不同flash颗粒及其不同页面的读、写、擦除和传输时延。
 
 **有关函数**
 
 - `init_nand_flash_timing`
+
 该函数在`init_nand_flash`时被调用，根据所定义的宏，完成上述结构体`struct NandFlashTiming`的填充。
+
 - `get_page_read_latency`等函数
+
 输入flash颗粒和页面类型，从上述结构体`struct NandFlashTiming`返回对应的时延。
 
 ## timing.c
@@ -81,14 +87,23 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 **有关函数**
 
 - 函数`set_latency`
+
 该函数为全局的`FemuCtrl *n`设置时延有关的字段，如`n->upg_rd_lat_ns = ...`。
+
 - 函数`advance_channel_timestmap`
+
 该函数根据传入的当前时间`now`，通道编号`id`，和本次操作的类型`opcode`，以及当前通道的状态`n->chnl_locks[ch]`，来更新通道编号`id`的通道下一次可以使用的时间。目前这个函数直接返回了`now`。
+
 但根据提供的剩下代码来看，其主要思路大致描述为：（1）获取当前操作的通道可用时间。如果当前的通道是可用状态（即，`now>=n->chnl_next_avail_time[ch]`），则直接可用（即，`start_data_xfer_ts=now`）；否则会等待到可用时间。（2）更新下次操作的通道可用时间。如果当前操作是`erase`操作，通道无需做页面传输，直接可用；否则为`read`或`write`操作时，还需要等待页面传输结束（即，`n->chnl_pg_xfer_lat_ns * 2`的时间）。
+
 （疑惑：但是为什么要乘以2，这个不太能理解，可能是出于数据传输可靠性的考虑？）
+
 - `advance_chip_timestamp`
+
 思路类似于上述函数`advance_channel_timestmap`，根据操作的类型得到当前操作（读、写、擦除）的时延，然后和现在芯片的可用时间`n->chip_next_avail_time[lunid]`共同更新下一次芯片的可用时间。
+
 注意：
+
 - 函数`advance_channel_timestmap`和 `advance_chip_timestamp`仅在oc12.c和oc20.c被调用了，暂不清楚为什么，不知道其他SSD怎么模拟的时延。
 - 这些通道和芯片时延的更新，都只是修改了全局结构体`struct FemuCtrl`的有关字段。
 
