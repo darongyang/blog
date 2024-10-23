@@ -66,7 +66,7 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 
 ## nand.h 和 nand.c
 
-通过宏定义定义了闪存颗粒的时延，如`#define TLC_LOWER_PAGE_WRITE_LATENCY_NS   (820500)`。
+通过宏定义定义了闪存颗粒的时延，如`#define TLC_LOWER_PAGE_WRITE_LATENCY_NS   (820500)`。
 
 **有关结构体**
 
@@ -173,12 +173,12 @@ static void *ftl_thread(void *arg){
         rc = femu_ring_dequeue(ssd->to_ftl[i], (void *)&req, 1);
         // 处理操作，执行黑盒SSD的FTL维护，并计算该操作的时延
         switch (req->cmd.opcode) {
-            case NVME_CMD_WRITE:
-                lat = ssd_write(ssd, req); 
-            ...
-        }
-        // 处理完成后，获得Tenio，插入到to_poller队列
-        rc = femu_ring_enqueue(ssd->to_poller[i], (void *)&req, 1);
+            case NVME_CMD_WRITE:
+                lat = ssd_write(ssd, req); 
+            ...
+        }
+        // 处理完成后，获得Tenio，插入到to_poller队列
+        rc = femu_ring_enqueue(ssd->to_poller[i], (void *)&req, 1);
 }
 ```
 
