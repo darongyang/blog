@@ -125,6 +125,7 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
 **有关函数**
 
 - 函数`cmp_pri`、`get_pri`和`set_pri`
+
 从这几个函数可以看出，在队列的维护中，以`expire_time`字段作为请求的优先级。结束时间越大，优先级越高。
 
 nvme处理的poller`nvme_poller`：
