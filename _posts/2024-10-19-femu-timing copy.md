@@ -62,7 +62,7 @@ OC指的是Open Channel SSD。作者只是讲了OC SSD的时延模拟所会遇�
     - `int64_t stime`：请求的开始时间戳，表示何时开始处理该请求。
     - `int64_t reqlat`：请求的时延（request latency），用于记录该请求的延迟。
     - `int64_t gcrt`: 全局完成时间戳（global completion runtime）。（这个字段在femu里没有用到？）
-    - `int64_t expire_time`：请求的过期时间戳，用于模拟请求超时机制（to改）。
+    - `int64_t expire_time`：请求的过期时间戳，用于模拟请求超时机制（对应为论文中的$$ T_{endio} $$）。
 
 ## nand.h 和 nand.c
 
