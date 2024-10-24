@@ -191,6 +191,22 @@ typedef struct NvmeNamespace {
 ```
 
 
+to read:
+
+```c
+
+    const uint8_t lbaid = NVME_ID_NS_FLBAS_INDEX(ns->id_ns.flbas);
+    const uint8_t lbads = NVME_ID_NS_LBAF_DS(ns, lbaid);
+    const uint16_t ms = NVME_ID_NS_LBAF_MS(ns, lbaid);
+    uint64_t data_size = nlb << lbads;
+    uint64_t meta_size = nlb * ms;
+
+    psl[i] = ns->start_block + (ppa << lbads);
+
+
+```
+
+
 ## 参考资料
 
 - <a href="https://nvmexpress.org/resource/nvme-namespaces/"> NVMe Namespaces | NVM EXPRESS</a>
