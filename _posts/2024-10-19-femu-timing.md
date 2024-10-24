@@ -184,6 +184,12 @@ static void *ftl_thread(void *arg){
 
 我觉得这是因为，只有`BBSSD`会有FTL表。首先，对于所有SSD，I/O请求都先会插入到`to_ftl`缓冲区中。对于白盒SSD，无需对这些请求进行额外的FTL操作。但对于`BBSSD`则需要将这些位于`to_ftl`缓冲区的取出，进行FTL操作后，再放入新的`to_poller`缓冲区中。最后这些已经完成的I/O请求才会被进一步进行真正的时延模拟。
 
+## 原因分析
+
+- ocssd的时延更新在结构体`static struct NandFlashTiming nand_flash_timing`中，该结构体是静态的啊。。。
+- 原来该结构体声明在了nand.h中，而更新接口在nand.c中，获取接口在nand.h中
+- 导致不同的.c文件都有一个静态的成员`nand_flash_timing`，其他.c文件调用nand.c的接口只改变了nand.c中独有的成员，调用nand.h接口查询的是自己独有的成员，结果查询结果全是0。。。
+
 ## Reference
 
 - <a href="https://haslab.org/2021/05/03/femu-nvme.html"> FEMU/nvme源码分析 </a>
