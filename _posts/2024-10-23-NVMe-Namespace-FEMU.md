@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NVMe Namespace and FEMU
-date: 2024-10-18 21:34:00
+date: 2024-10-22 21:34:00
 description: learn about NVMe namespace and code in femu
 tags: ssd-simulator, flash
 categories: sample-posts
@@ -39,31 +39,17 @@ images:
 ## FEMU有关代码
 
 ```c
-#define NVME_ID_NS_NSFEAT_THIN(nsfeat)      ((nsfeat & 0x1))
-#define NVME_ID_NS_FLBAS_EXTENDED(flbas)    ((flbas >> 4) & 0x1)
-#define NVME_ID_NS_FLBAS_INDEX(flbas)       ((flbas & 0xf))
-#define NVME_ID_NS_MC_SEPARATE(mc)          ((mc >> 1) & 0x1)
-#define NVME_ID_NS_MC_EXTENDED(mc)          ((mc & 0x1))
-#define NVME_ID_NS_DPC_LAST_EIGHT(dpc)      ((dpc >> 4) & 0x1)
-#define NVME_ID_NS_DPC_FIRST_EIGHT(dpc)     ((dpc >> 3) & 0x1)
-#define NVME_ID_NS_DPC_TYPE_3(dpc)          ((dpc >> 2) & 0x1)
-#define NVME_ID_NS_DPC_TYPE_2(dpc)          ((dpc >> 1) & 0x1)
-#define NVME_ID_NS_DPC_TYPE_1(dpc)          ((dpc & 0x1))
-#define NVME_ID_NS_DPC_TYPE_MASK            0x7
+typedef struct NvmeLBAF {
+    uint16_t    ms; 
+    uint8_t     lbads; 
+    uint8_t     rp; 
+} NvmeLBAF;
 ```
 
-```c
-#define NVME_ID_NS_LBADS(ns) \
-    ((ns)->id_ns.lbaf[NVME_ID_NS_FLBAS_INDEX((ns)->id_ns.flbas)].lbads)
-
-#define NVME_ID_NS_LBADS_BYTES(ns) (1 << NVME_ID_NS_LBADS(ns))
-
-#define NVME_ID_NS_MS(ns) \
-    le16_to_cpu(((ns)->id_ns.lbaf[NVME_ID_NS_FLBAS_INDEX((ns)->id_ns.flbas)].ms))
-
-#define NVME_ID_NS_LBAF_DS(ns, lba_index) (ns->id_ns.lbaf[lba_index].lbads)
-#define NVME_ID_NS_LBAF_MS(ns, lba_index) (ns->id_ns.lbaf[lba_index].ms)
-```
+`NvmeLBAF`定义了NVMe Namespace的LBA格式，每个命名空间支持多个LBA格式。
+- `ms`：元数据大小，字节数
+- `lbads`：逻辑块的大小
+- `rp`：相对性能（Relative Performance），用于描述不同 LBA 格式之间的性能差异。（有点怪，不确定）
 
 ```c
 typedef struct NvmeRangeType {
@@ -77,13 +63,12 @@ typedef struct NvmeRangeType {
 } NvmeRangeType;
 ```
 
-```c
-typedef struct NvmeLBAF {
-    uint16_t    ms;
-    uint8_t     lbads;
-    uint8_t     rp;
-} NvmeLBAF;
-```
+`NvmeRangeType`结构体定义了 NVMe 中的一个范围类型，用于描述命名空间的逻辑块范围。通常用于 `Dataset Management` 命令，用来指定哪些 LBA 是有效或无效的。
+- `type`和`attributes`：逻辑块范围的相关属性。
+-  `slba`：起始 LBA（逻辑块地址）。
+- `nlb`：指定范围的块数。
+- `guid`：全局唯一标识符 (GUID)。
+- 其他字段是保留或未来扩展字段。
 
 ```c
 typedef struct NvmeIdNs {
@@ -122,6 +107,16 @@ typedef struct NvmeIdNs {
 } NvmeIdNs;
 ```
 
+`NvmeIdNs`结构体定义了 NVMe 标识命名空间时所使用的命名空间识别结构，通常用于 NVMe 的 `Identify Namespace` 命令返回信息。
+- `nsze`：命名空间的总大小（以 LBA 为单位）。
+- `ncap`：命名空间的最大容量。
+- `nuse`：命名空间的已用空间。
+- `nsfeat`：命名空间的特性标识，指示命名空间支持的特性。
+- `nlbaf`：支持的 LBA 格式数量。
+- `flbas`：默认的 LBA 格式选择。
+- `lbaf[]`：LBA 格式数组，最多支持 16 种格式。
+- 其他字段如 `nguid`（全局命名空间唯一标识符）、`eui64`（扩展唯一标识符）等是命名空间的标识信息。
+
 ```c
 typedef struct NvmeNamespace {
     struct FemuCtrl *ctrl;
@@ -148,6 +143,53 @@ typedef struct NvmeNamespace {
     void *state;
 } NvmeNamespace;
 ```
+
+`NvmeNamespace`结构体定义了 NVMe 的命名空间（Namespace），是一个逻辑分区，包含了该命名空间的标识符、逻辑分区范围、各种属性和状态。
+
+和命令空间LBA格式有关的宏：
+
+```c
+// 从 flbas 字段的第 4 位提取标志位，用于判断 LBA 格式是否包含扩展信息。
+#define NVME_ID_NS_FLBAS_EXTENDED(flbas)    ((flbas >> 4) & 0x1)
+
+// 该宏提取 flbas 字段的低 4 位（bit 0-3），表示命名空间的默认 LBA 格式索引。
+#define NVME_ID_NS_FLBAS_INDEX(flbas)       ((flbas & 0xf))
+
+// 这两个宏用于获取命名空间 (Namespace) 中逻辑块寻址格式（LBA Format）的块大小信息
+#define NVME_ID_NS_LBADS(ns) \
+    ((ns)->id_ns.lbaf[NVME_ID_NS_FLBAS_INDEX((ns)->id_ns.flbas)].lbads)
+#define NVME_ID_NS_LBADS_BYTES(ns) (1 << NVME_ID_NS_LBADS(ns))
+
+// 获取命名空间的元数据大小 先获取默认地址格式 然后获取ms
+#define NVME_ID_NS_MS(ns) \
+    le16_to_cpu(((ns)->id_ns.lbaf[NVME_ID_NS_FLBAS_INDEX((ns)->id_ns.flbas)].ms))
+
+// 获取lba_index对应的地址格式类型的块大小和元数据大小
+#define NVME_ID_NS_LBAF_DS(ns, lba_index) (ns->id_ns.lbaf[lba_index].lbads)
+#define NVME_ID_NS_LBAF_MS(ns, lba_index) (ns->id_ns.lbaf[lba_index].ms)
+```
+
+其他一些和ns有关的宏分析：
+
+```c
+// 该宏从 nsfeat 字段中提取最低位（bit 0）来确定命名空间是否启用了稀疏分配
+#define NVME_ID_NS_NSFEAT_THIN(nsfeat)      ((nsfeat & 0x1))
+
+// 从 mc 字段的第 1 位提取标志位，判断元数据是否独立存储
+#define NVME_ID_NS_MC_SEPARATE(mc)          ((mc >> 1) & 0x1)
+
+// 该宏从 mc 字段的第 0 位提取标志位，判断元数据是否嵌入在用户数据中。
+#define NVME_ID_NS_MC_EXTENDED(mc)          ((mc & 0x1))
+
+// 该宏从 dpc 字段的第 4 位提取标志位，判断是否支持最后 8 字节的保护信息。其余的宏类似，也是与保护信息相关。
+#define NVME_ID_NS_DPC_LAST_EIGHT(dpc)      ((dpc >> 4) & 0x1)
+#define NVME_ID_NS_DPC_FIRST_EIGHT(dpc)     ((dpc >> 3) & 0x1)
+#define NVME_ID_NS_DPC_TYPE_3(dpc)          ((dpc >> 2) & 0x1)
+#define NVME_ID_NS_DPC_TYPE_2(dpc)          ((dpc >> 1) & 0x1)
+#define NVME_ID_NS_DPC_TYPE_1(dpc)          ((dpc & 0x1))
+#define NVME_ID_NS_DPC_TYPE_MASK            0x7
+```
+
 
 ## 参考资料
 
