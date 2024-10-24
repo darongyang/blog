@@ -209,7 +209,6 @@ to read:
 
 ## 参考资料
 
+- 《深入浅出SSD：固态存储核心技术、原理与实战》
 - <a href="https://nvmexpress.org/resource/nvme-namespaces/"> NVMe Namespaces | NVM EXPRESS</a>
 -  <a href="https://www.ibm.com/docs/en/linux-on-systems?topic=nvme-namespaces"> NVMe Namespaces | IBM</a>
-- https://www.snia.org/sites/default/files/SDCEMEA/2020/4%20-%20Or%20Lapid%20Micron%20-%20Understanding%20NVMe%20namespaces%20-%20Final.pdf
-- https://www.youtube.com/watch?v=7MYw-0qfpH8
