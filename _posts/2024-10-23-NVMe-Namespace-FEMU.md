@@ -191,19 +191,44 @@ typedef struct NvmeNamespace {
 ```
 
 
-to read:
+oc12.c中（`oc12_read`和`oc12_write`）有关代码：
 
 ```c
+// 获取该namespace默认的lba格式
+const uint8_t lbaid = NVME_ID_NS_FLBAS_INDEX(ns->id_ns.flbas);
+// 获取该lba格式对应的块大小和元数据大小
+const uint8_t lbads = NVME_ID_NS_LBAF_DS(ns, lbaid);
+const uint16_t ms = NVME_ID_NS_LBAF_MS(ns, lbaid);
+uint64_t data_size = nlb << lbads;
+uint64_t meta_size = nlb * ms;
 
-    const uint8_t lbaid = NVME_ID_NS_FLBAS_INDEX(ns->id_ns.flbas);
-    const uint8_t lbads = NVME_ID_NS_LBAF_DS(ns, lbaid);
-    const uint16_t ms = NVME_ID_NS_LBAF_MS(ns, lbaid);
-    uint64_t data_size = nlb << lbads;
-    uint64_t meta_size = nlb * ms;
+// 获取物理地址ppa对应的实际存储的内存地址（单位字节）
+psl[i] = ns->start_block + (ppa << lbads)
+```
 
-    psl[i] = ns->start_block + (ppa << lbads);
+## 原因分析
 
+- 为了实现传输数据，ocssd12将`req->slba`的数组从ocssd的ppa变成了内存地址
+- 而时延模拟在传输数据结束后。在时延模拟时使用了修改后的`req->slba`（已经被改成了内存地址），导致了错误。正确的做法是需要将`req->slba`先还原为ocssd的ppa，再进行时延模拟。
 
+```c
+uint64_t * ppa_ocssd = (uint64_t *)g_malloc0(sizeof(uint64_t) * nlb);
+
+for (i = 0; i < nlb; i++) {
+    ...
+    ppa_ocssd[i] = psl[i]; // 寄存ppa
+    psl[i] = ns->start_block + (ppa << lbads);
+}
+...
+// 传输数据
+backend_rw(n->mbe, &req->qsg, psl, req->is_write);
+
+// 恢复ppa
+for (i = 0; i < nlb; i++) {
+    psl[i] = ppa_ocssd[i];
+}
+// 时延模拟
+oc12_advance_status(n, ns, cmd, req);
 ```
 
 
