@@ -216,8 +216,8 @@ uint64_t * ppa_ocssd = (uint64_t *)g_malloc0(sizeof(uint64_t) * nlb);
 
 for (i = 0; i < nlb; i++) {
     ...
-    ppa_ocssd[i] = psl[i]; // 寄存ppa
-    psl[i] = ns->start_block + (ppa << lbads);
+    ppa_ocssd[i] = psl[i]; // 寄存ppa
+    psl[i] = ns->start_block + (ppa << lbads);
 }
 ...
 // 传输数据
@@ -225,7 +225,7 @@ backend_rw(n->mbe, &req->qsg, psl, req->is_write);
 
 // 恢复ppa
 for (i = 0; i < nlb; i++) {
-    psl[i] = ppa_ocssd[i];
+    psl[i] = ppa_ocssd[i];
 }
 // 时延模拟
 oc12_advance_status(n, ns, cmd, req);
