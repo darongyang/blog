@@ -40,7 +40,7 @@ images:
 
 ```c
 typedef struct NvmeLBAF {
-    uint16_t    ms; 
+    uint16_t    ms; 
     uint8_t     lbads; 
     uint8_t     rp; 
 } NvmeLBAF;
@@ -56,8 +56,8 @@ typedef struct NvmeRangeType {
     uint8_t     type;
     uint8_t     attributes;
     uint8_t     rsvd2[14];
-    uint64_t    slba;
-    uint64_t    nlb;
+    uint64_t    slba;
+    uint64_t    nlb;
     uint8_t     guid[16];
     uint8_t     rsvd48[16];
 } NvmeRangeType;
@@ -72,9 +72,9 @@ typedef struct NvmeRangeType {
 
 ```c
 typedef struct NvmeIdNs {
-    uint64_t    nsze;
-    uint64_t    ncap;
-    uint64_t    nuse;
+    uint64_t    nsze;
+    uint64_t    ncap;
+    uint64_t    nuse;
     uint8_t     nsfeat;
     uint8_t     nlbaf;
     uint8_t     flbas;
@@ -85,23 +85,23 @@ typedef struct NvmeIdNs {
     uint8_t     rescap;
     uint8_t     fpi;
     uint8_t     dlfeat;
-    uint16_t    nawun;
-    uint16_t    nawupf;
-    uint16_t    nacwu;
-    uint16_t    nabsn;
-    uint16_t    nabo;
-    uint16_t    nabspf;
-    uint16_t    noiob;
+    uint16_t    nawun;
+    uint16_t    nawupf;
+    uint16_t    nacwu;
+    uint16_t    nabsn;
+    uint16_t    nabo;
+    uint16_t    nabspf;
+    uint16_t    noiob;
     uint8_t     nvmcap[16];
-    uint16_t    npwg;
-    uint16_t    npwa;
-    uint16_t    npdg;
-    uint16_t    npda;
-    uint16_t    nows;
+    uint16_t    npwg;
+    uint16_t    npwa;
+    uint16_t    npdg;
+    uint16_t    npda;
+    uint16_t    nows;
     uint8_t     rsvd74[30];
     uint8_t     nguid[16];
-    uint64_t    eui64;
-    NvmeLBAF    lbaf[16];
+    uint64_t    eui64;
+    NvmeLBAF    lbaf[16];
     uint8_t     rsvd192[192];
     uint8_t     vs[3712];
 } NvmeIdNs;
@@ -120,18 +120,18 @@ typedef struct NvmeIdNs {
 ```c
 typedef struct NvmeNamespace {
     struct FemuCtrl *ctrl;
-    NvmeIdNs        id_ns;
+    NvmeIdNs        id_ns;
     NvmeRangeType   lba_range[64];
     unsigned long   *util;
     unsigned long   *uncorrectable;
-    uint32_t        id;
-    uint64_t        size; /* Coperd: for ZNS, FIXME */
-    uint64_t        ns_blks;
-    uint64_t        start_block;
-    uint64_t        meta_start_offset;
-    uint64_t        tbl_dsk_start_offset;
-    uint32_t        tbl_entries;
-    uint64_t        *tbl;
+    uint32_t        id;
+    uint64_t        size; /* Coperd: for ZNS, FIXME */
+    uint64_t        ns_blks;
+    uint64_t        start_block;
+    uint64_t        meta_start_offset;
+    uint64_t        tbl_dsk_start_offset;
+    uint32_t        tbl_entries;
+    uint64_t        *tbl;
     Oc12Bbt   **bbtbl;
     /* Coperd: OC20 */
     struct {
@@ -150,7 +150,7 @@ typedef struct NvmeNamespace {
 
 ```c
 // 从 flbas 字段的第 4 位提取标志位，用于判断 LBA 格式是否包含扩展信息。
-#define NVME_ID_NS_FLBAS_EXTENDED(flbas)    ((flbas >> 4) & 0x1)
+#define NVME_ID_NS_FLBAS_EXTENDED(flbas)    ((flbas >> 4) & 0x1)
 
 // 该宏提取 flbas 字段的低 4 位（bit 0-3），表示命名空间的默认 LBA 格式索引。
 #define NVME_ID_NS_FLBAS_INDEX(flbas)       ((flbas & 0xf))
@@ -173,21 +173,21 @@ typedef struct NvmeNamespace {
 
 ```c
 // 该宏从 nsfeat 字段中提取最低位（bit 0）来确定命名空间是否启用了稀疏分配
-#define NVME_ID_NS_NSFEAT_THIN(nsfeat)      ((nsfeat & 0x1))
+#define NVME_ID_NS_NSFEAT_THIN(nsfeat)      ((nsfeat & 0x1))
 
 // 从 mc 字段的第 1 位提取标志位，判断元数据是否独立存储
-#define NVME_ID_NS_MC_SEPARATE(mc)          ((mc >> 1) & 0x1)
+#define NVME_ID_NS_MC_SEPARATE(mc)          ((mc >> 1) & 0x1)
 
 // 该宏从 mc 字段的第 0 位提取标志位，判断元数据是否嵌入在用户数据中。
-#define NVME_ID_NS_MC_EXTENDED(mc)          ((mc & 0x1))
+#define NVME_ID_NS_MC_EXTENDED(mc)          ((mc & 0x1))
 
 // 该宏从 dpc 字段的第 4 位提取标志位，判断是否支持最后 8 字节的保护信息。其余的宏类似，也是与保护信息相关。
-#define NVME_ID_NS_DPC_LAST_EIGHT(dpc)      ((dpc >> 4) & 0x1)
+#define NVME_ID_NS_DPC_LAST_EIGHT(dpc)      ((dpc >> 4) & 0x1)
 #define NVME_ID_NS_DPC_FIRST_EIGHT(dpc)     ((dpc >> 3) & 0x1)
-#define NVME_ID_NS_DPC_TYPE_3(dpc)          ((dpc >> 2) & 0x1)
-#define NVME_ID_NS_DPC_TYPE_2(dpc)          ((dpc >> 1) & 0x1)
-#define NVME_ID_NS_DPC_TYPE_1(dpc)          ((dpc & 0x1))
-#define NVME_ID_NS_DPC_TYPE_MASK            0x7
+#define NVME_ID_NS_DPC_TYPE_3(dpc)          ((dpc >> 2) & 0x1)
+#define NVME_ID_NS_DPC_TYPE_2(dpc)          ((dpc >> 1) & 0x1)
+#define NVME_ID_NS_DPC_TYPE_1(dpc)          ((dpc & 0x1))
+#define NVME_ID_NS_DPC_TYPE_MASK            0x7
 ```
 
 
