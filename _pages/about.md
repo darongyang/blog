@@ -38,7 +38,7 @@ The work I have been engaged in recently:
   - [ ] Austere (ATC'20)
   - [ ] and etc
 - Reading and Summary in `Partital FTL with Learning`
-  - [ ] LeaFTL(ASPLOS'23) - May Skim Next Week
+  - [ ] LeaFTL(ASPLOS'23) -> May Skim Next Week
   - [ ] LearnedFTL(HPCA'24)
   - [ ] and etc
 - Try to Find Other Area on `Traditional Flash Storage`
