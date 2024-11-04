@@ -32,8 +32,8 @@ The work I have been engaged in recently:
   - [ ] CSAL(EuroSys'24) | √ Finish Scanning | -> To Update |
   - [ ] Baleen(FAST'24)
   - [ ] Austere(ATC'20)
-  - and etc
+  - [ ] and etc
 - Reading and Summary in `Partital FTL with Learning`
   - [ ] LeaFTL(ASPLOS'23)
   - [ ] LearnedFTL(HPCA'24)
-  - and etc
+  - [ ] and etc
