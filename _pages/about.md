@@ -24,14 +24,17 @@ The work I have been engaged in recently:
 
 - Exams of Required Courses
 - A Immature work on High-density Flash Memory
-- Investigation in `AI pipeline Storage`
+- Investigation in `AI Pipeline and Storage`
+  - [ ] G10 (MICRO'23)
+  - [ ] CachedAttention (ATC'24)
+  - [ ] vLLM (SOSP'23)
 - Reading and Summary in `Flash Cache`
-  - [ ] CacheLib(OSDI'20)
-  - [ ] Kangaroo(SOSP'21) - Scanning Now -
-  - [ ] FairyWREN(OSDI'24)
-  - [ ] CSAL(EuroSys'24) - √ Finish Scanning -> To Update
-  - [ ] Baleen(FAST'24)
-  - [ ] Austere(ATC'20)
+  - [ ] CacheLib (OSDI'20)
+  - [ ] Kangaroo (SOSP'21) -> Scanning Now.
+  - [ ] FairyWREN (OSDI'24)
+  - [ ] CSAL (EuroSys'24) -> √ Finish Scanning. To Update.
+  - [ ] Baleen (FAST'24)
+  - [ ] Austere (ATC'20)
   - [ ] and etc
 - Reading and Summary in `Partital FTL with Learning`
   - [ ] LeaFTL(ASPLOS'23) - May Skim Next Week
