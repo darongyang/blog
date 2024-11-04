@@ -26,8 +26,8 @@ The work I have been engaged in recently:
 - A Immature work on High-density Flash Memory
 - Investigation in `AI Pipeline and Storage`
   - [ ] G10 (MICRO'23)
-  - [ ] CachedAttention (ATC'24)
   - [ ] vLLM (SOSP'23)
+  - [ ] CachedAttention (ATC'24)
 - Reading and Summary in `Flash Cache`
   - [ ] CacheLib (OSDI'20)
   - [ ] Kangaroo (SOSP'21) -> Scanning Now.
@@ -40,3 +40,6 @@ The work I have been engaged in recently:
   - [ ] LeaFTL(ASPLOS'23) - May Skim Next Week
   - [ ] LearnedFTL(HPCA'24)
   - [ ] and etc
+- Try to Find Other Area on `Traditional Flash Storage`
+  - ZNS or High-Density SSD or Dedup? However, I think it's hard :-)
+- May Participate in a Work about MOE?
