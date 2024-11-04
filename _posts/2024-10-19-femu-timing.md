@@ -3,7 +3,7 @@ layout: post
 title: FEMU Timing Model Analysis
 date: 2024-10-18 21:34:00
 description: learn about FEMU Timing Model
-tags: ssd-simulator, flash
+tags: ssd-simulator
 categories: sample-posts
 featured: true
 images:
