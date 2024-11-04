@@ -27,9 +27,9 @@ The work I have been engaged in recently:
 - Investigation in `AI pipeline Storage`
 - Reading and Summary in `Flash Cache`
   - [ ] CacheLib(OSDI'20)
-  - [ ] Kangaroo(SOSP'21)
+  - [ ] Kangaroo(SOSP'21) | Scanning Now | 
   - [ ] FairyWREN(OSDI'24)
-  - [ ] CSAL(EuroSys'24)
+  - [ ] CSAL(EuroSys'24) | √ Finish Scanning | -> To Update |
   - [ ] Baleen(FAST'24)
   - [ ] Austere(ATC'20)
   - and etc
