@@ -29,11 +29,11 @@ The work I have been engaged in recently:
   - [ ] CacheLib(OSDI'20)
   - [ ] Kangaroo(SOSP'21) - Scanning Now -
   - [ ] FairyWREN(OSDI'24)
-  - [ ] CSAL(EuroSys'24) | √ Finish Scanning | -> To Update |
+  - [ ] CSAL(EuroSys'24) - √ Finish Scanning -> To Update
   - [ ] Baleen(FAST'24)
   - [ ] Austere(ATC'20)
   - [ ] and etc
 - Reading and Summary in `Partital FTL with Learning`
-  - [ ] LeaFTL(ASPLOS'23) | May Skim Next Week |
+  - [ ] LeaFTL(ASPLOS'23) - May Skim Next Week
   - [ ] LearnedFTL(HPCA'24)
   - [ ] and etc
