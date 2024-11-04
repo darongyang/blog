@@ -27,7 +27,7 @@ The work I have been engaged in recently:
 - Investigation in `AI pipeline Storage`
 - Reading and Summary in `Flash Cache`
   - [ ] CacheLib(OSDI'20)
-  - [ ] Kangaroo(SOSP'21) | Scanning Now | 
+  - [ ] Kangaroo(SOSP'21) - Scanning Now -
   - [ ] FairyWREN(OSDI'24)
   - [ ] CSAL(EuroSys'24) | √ Finish Scanning | -> To Update |
   - [ ] Baleen(FAST'24)
@@ -35,5 +35,5 @@ The work I have been engaged in recently:
   - [ ] and etc
 - Reading and Summary in `Partital FTL with Learning`
   - [ ] LeaFTL(ASPLOS'23) | May Skim Next Week |
-  - [ ] LearnedFTL(HPCA'24) 
+  - [ ] LearnedFTL(HPCA'24)
   - [ ] and etc
