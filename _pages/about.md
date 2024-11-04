@@ -33,7 +33,7 @@ The work I have been engaged in recently:
   - [ ] Baleen(FAST'24)
   - [ ] Austere(ATC'20)
   - and etc
-- Reading and Summary in `Partital FTL with Learning``
-  - [ ] LeaFTL()
-  - [ ] LearnedFTL()
+- Reading and Summary in `Partital FTL with Learning`
+  - [ ] LeaFTL(ASPLOS'23)
+  - [ ] LearnedFTL(HPCA'24)
   - and etc
