@@ -22,14 +22,14 @@ social: false# includes social icons at the bottom of the page
 
 The work I have been engaged in recently:
 
-- Required Courses
+- Exams of Required Courses
 - A Immature work on High-density Flash Memory
-- Investigation in ML Storage, pure Flash Storage (like ZNS), Serverless Storage, and etc
-
-**Ignore the following content, which have not been removed from the template.**
-
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
-
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+- Investigation in `AI pipeline Storage`
+- Reading and Summary in `Flash Cache`:
+  - [ ] CacheLib(OSDI'20)
+  - [ ] Kangaroo(SOSP'21)
+  - [ ] FairyWREN(OSDI'24)
+  - [ ] CSAL(EuroSys'24)
+  - [ ] Baleen(FAST'24)
+  - [ ] Austere(ATC'20)
+  - and etc
