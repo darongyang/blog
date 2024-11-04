@@ -25,11 +25,15 @@ The work I have been engaged in recently:
 - Exams of Required Courses
 - A Immature work on High-density Flash Memory
 - Investigation in `AI pipeline Storage`
-- Reading and Summary in `Flash Cache`:
+- Reading and Summary in `Flash Cache`
   - [ ] CacheLib(OSDI'20)
   - [ ] Kangaroo(SOSP'21)
   - [ ] FairyWREN(OSDI'24)
   - [ ] CSAL(EuroSys'24)
   - [ ] Baleen(FAST'24)
   - [ ] Austere(ATC'20)
+  - and etc
+- Reading and Summary in `Partital FTL with Learning``
+  - [ ] LeaFTL()
+  - [ ] LearnedFTL()
   - and etc
