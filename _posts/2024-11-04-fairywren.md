@@ -13,7 +13,33 @@ images:
 
 正在阅读中，后续推送一下......
 
-## 设计实现
+## 2 研究动机
+
+### 2.4 关键动机：LBAD接口的DLWA（GC的写放大）
+
+Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻辑层。Kangaroo的缓存驱逐/替换操作基于逻辑层，LBAD的垃圾回收操作基于物理层，两者互不知情。那么就会带来：GC经常会重写一些无效的数据。表现为：GC刚搬迁完，这个数据就被替换而无效了。对于密集覆写的闪存缓存来说，这个问题尤为显著。因此，作者认为垃圾回收是缓存替换的一个机会。
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/LBAD-GC.png" title="architecture" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    LBAD接口会执行上层透明的垃圾回收
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/LBAD-rewrite.png" title="architecture" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    透明垃圾回收的块随后会被重写
+</div>
+
+
+
+## 3 设计实现
 
 （想把最头大的这部分先捋清楚...）
 
