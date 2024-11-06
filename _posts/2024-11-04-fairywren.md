@@ -43,6 +43,10 @@ Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻�
 
 （想把最头大的这部分先捋清楚...）
 
+Key insight：将垃圾收集和缓存准入进行统一，无论在线写入还是垃圾回收都能够进行对象准入。（说简单点，就是让垃圾回收的时候进行判断xxx，也能够重写一些热对象）
+
+### 3.1 系统结构
+
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/architecture.png" title="architecture" class="img-fluid rounded z-depth-1" %}
@@ -50,6 +54,35 @@ Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻�
 </div>
 <div class="caption">
     FairyWren系统结构
+</div>
+
+- LOC：缓存大对象（>2KB）
+	- DRAM：EU大小的segment buffer + 大对象索引
+	- LOC：采用日志化结构缓存，执行大的顺序写。适应到WREN很简单，segment大小定为一个EU即可。由于对象较大，其DRAM开销较小。
+	- 两种缓存操作：（1）**插入**。先插入DRAM并建立索引，segment满了一起写闪存。当插入发生替换时，采用GC相结合的设计，见3.2。（2）**查询**。查询查找object的key对应的地址，然后从闪存读取。
+- SOC：缓存小对象
+	- DRAM：FwLog的segment buffer + FwLog的小对象索引 + FwSet的set索引
+	- FwLog：采用日志化结构缓存，缓冲小object以便可以高效写入FwSet。小对象索引DRAM开销大，为了保证其开销，FwLog只占SOC的5%。
+	- FwSet：采用组相连缓存。对小对象进行日志化缓存会DRAM爆炸。WREN接口不支持随机写，FwSet适配到WREN中要遵循日志结构存储，将set（大于4KB）作为日志化追加的对象（关键设计）。set索引开销小。
+	- 两种缓存操作：（1）**插入**。采用类似于LOC方式先插入到FwLog，如果FwLog满了，会插入到FwSet中。FwSet的插入可能会进一步导致FwSet的替换，采用GC相结合的设计，见3.2。（2）**查询**。首先采用类似于LOC方式在FwLog查询，如果找不到再hash得到对象在FwSet中对应的Set。在Set内顺序扫描找到对象。
+
+### 3.2 垃圾回收和在线写的统一
+
+当在线写，写满的时候会发生缓存替换。FairyWREN讲缓存替换和垃圾回收统一起来，避免了不必要的垃圾回收写入。FairyWREN新设计单独的驱逐操作。
+- LOC
+	- 当LOC满的时候，FairyWREN进行替换。驱逐时，由于segment和EU对齐，通过LRU或FIFO移除整个segment，即EU即可，完成WA=1的擦除。
+- SOC
+	- 执行“嵌套打包”算法。当FwSet满的时候，必须进行垃圾回收。FairyWREN同样将其和缓存替换相结合。最朴素的方法是直接将末尾的EU驱逐，但冷热对象混杂会大大降低命中率。FwSet采用的是“嵌套打包”算法。FwSet进行垃圾回收时，会将对象从FwLog搬迁到FwSet。进一步对FwSet的对象进行冷热划分。
+- 基于WREN接口实现对象分离和冷热分离
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/nest-pack.png" title="architecture" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    nest打包方法：SOC的垃圾回收和驱逐流程
 </div>
 
 
