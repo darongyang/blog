@@ -77,10 +77,6 @@ Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻�
     nest打包方法：SOC的垃圾回收和驱逐流程
 </div>
 
-- **冷热数据分离优化：** Kangaroo 采用 multi-bit clock based RRIP 算法追踪每个 set 中 objects 的冷热程度，用于选择 object 进行驱逐。冷热数据分离是降低垃圾回收写放大的常用方法。FairyWREN 进一步将 FwSet 中每个 set 分为 hot 和 cold 两个 subsets（各 4KB 大小），分别存储到不同的 EU 中。特别地，非热点 objects 会被替换导致对应的 sets 被更频繁地更新，因此将热点和非热点 objects 分别放到 cold 和 hot subsets 中。
-
-- **DRAM 需求缩减优化：** 类似于 Kangaroo，将 keyspace 根据 key 静态分成多个独立的缓存分区，以节省每个索引项的比特长度。另外，通过增大 set size 来减小 FwSet 索引。FairyWREN 的 DRAM 开销分解分析如下，总体上每缓存一个 object 平均需要 8.3 bit 元数据。
-
 - LOC
 	- 当LOC满的时候，FairyWREN进行替换。驱逐时，由于segment和EU对齐，通过LRU或FIFO移除整个segment，即EU即可，完成WA=1的擦除。
 - SOC（关键设计）
@@ -89,6 +85,10 @@ Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻�
 	- **如何work**？设计的最关键在于：合并了之前两个不同的过程，实现垃圾回收和缓存写入与驱逐/替换的协作。最坏的例子（如前面2.4所介绍）：LBAD的垃圾回收刚搬迁完一个Set，然后FwLog来了一个新对象后，又要马上被重写。在LBAD中，无法实现写入合并。而FairyWREN基于上述的嵌入打包，消除了很多不必要的写入。
 
 ### 3.3 KwSet的冷热对象分离
+
+- **冷热数据分离优化：** Kangaroo 采用 multi-bit clock based RRIP 算法追踪每个 set 中 objects 的冷热程度，用于选择 object 进行驱逐。冷热数据分离是降低垃圾回收写放大的常用方法。FairyWREN 进一步将 FwSet 中每个 set 分为 hot 和 cold 两个 subsets（各 4KB 大小），分别存储到不同的 EU 中。特别地，非热点 objects 会被替换导致对应的 sets 被更频繁地更新，因此将热点和非热点 objects 分别放到 cold 和 hot subsets 中。
+
+- **DRAM 需求缩减优化：** 类似于 Kangaroo，将 keyspace 根据 key 静态分成多个独立的缓存分区，以节省每个索引项的比特长度。另外，通过增大 set size 来减小 FwSet 索引。FairyWREN 的 DRAM 开销分解分析如下，总体上每缓存一个 object 平均需要 8.3 bit 元数据。
 
 
 ## 个人评价
