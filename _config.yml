@@ -14,7 +14,7 @@ footer_text: >
   Use the Firefly green theme for day mode and the Sam red theme for night mode.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: 📖 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: /assets/img/firefly1.webp #  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://darongyang.github.io # the base hostname & protocol for your site
 baseurl:  /blog # the subpath of your site, e.g. /blog/. Leave blank for root
