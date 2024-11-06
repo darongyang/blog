@@ -35,6 +35,8 @@ images:
 
 ## reference
 
+- <a href="https://www.usenix.org/conference/osdi24/presentation/mcallister"> FairyWREN | OSDI'24 </a>
+- <a href="https://saramcallister.github.io/files/2024-osdi-mcallister-slides.pdf"> FairyWREN Presentation Slides</a>
 - <a href="https://mp.weixin.qq.com/s/0g1jBn9SdE4QwygKx2qwQQ">【论文解读】数据中心节能减排：可持续的闪存缓存设计 FairyWREN (OSDI'24) </a>
 - <a href="https://www.zhihu.com/question/649626302/answer/3596509565"> 2024年操作系统设计与实现研讨会（OSDI）有哪些值得关注的文章？--FairyWREN </a>
 - <a href="https://zhuanlan.zhihu.com/p/708037149"> OSDI 2024 论文评述 Day 3 Session 9: Data Management | IPADS-SYS </a>
