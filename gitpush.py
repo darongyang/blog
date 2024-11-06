@@ -7,7 +7,7 @@ while True:
     
     # Check if the result contains the word 'unable' (indicating failure)
     if "unable" in str(result.stderr):
-        str(result.stderr)
+        print(str(result.stderr))
         time.sleep(1)  # Wait 1 seconds before retrying
     else:
         print("Push succeeded!")
