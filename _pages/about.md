@@ -44,3 +44,12 @@ The work I have been engaged in recently:
 - Try to Find Other Area on `Traditional Flash Storage`
   - ZNS or High-Density SSD or Dedup? However, I think it's hard :-)
 - May Participate in a Work about MOE?
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/honkai-2.png" title="architecture" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Firefly's Secret Base in Dream's Edge
+</div>
