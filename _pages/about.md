@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 # subtitle: A paper a day, the reject away~
-subtitle: New to Storage!
+subtitle: New to Storage! Star Rail Firefly Lover!
 
 profile:
   align: right
