@@ -43,7 +43,7 @@ Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻�
 
 （想把最头大的这部分先捋清楚...）
 
-Key insight：将垃圾收集和缓存准入进行统一，无论在线写入还是垃圾回收都能够进行对象准入。（说简单点，就是让垃圾回收的时候进行判断xxx，也能够重写一些热对象）
+**Key insight**：将垃圾回收和缓存准入进行统一，无论在线写入还是垃圾回收都能够进行对象准入。（换句话说，就是借助WREN让垃圾回收的时候做到object attention，主动判断哪些对象要重写/回收，避免像LBAD那样无效回收）
 
 ### 3.1 系统结构
 
@@ -68,14 +68,6 @@ Key insight：将垃圾收集和缓存准入进行统一，无论在线写入还
 
 ### 3.2 垃圾回收和在线写的统一
 
-当在线写，写满的时候会发生缓存替换。FairyWREN讲缓存替换和垃圾回收统一起来，避免了不必要的垃圾回收写入。FairyWREN新设计单独的驱逐操作。
-- LOC
-	- 当LOC满的时候，FairyWREN进行替换。驱逐时，由于segment和EU对齐，通过LRU或FIFO移除整个segment，即EU即可，完成WA=1的擦除。
-- SOC
-	- 执行“嵌套打包”算法。当FwSet满的时候，必须进行垃圾回收。FairyWREN同样将其和缓存替换相结合。最朴素的方法是直接将末尾的EU驱逐，但冷热对象混杂会大大降低命中率。FwSet采用的是“嵌套打包”算法。FwSet进行垃圾回收时，会将对象从FwLog搬迁到FwSet。进一步对FwSet的对象进行冷热划分。
-- 基于WREN接口实现对象分离和冷热分离
-
-
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/nest-pack.png" title="architecture" class="img-fluid rounded z-depth-1" %}
@@ -84,6 +76,19 @@ Key insight：将垃圾收集和缓存准入进行统一，无论在线写入还
 <div class="caption">
     nest打包方法：SOC的垃圾回收和驱逐流程
 </div>
+
+- **冷热数据分离优化：** Kangaroo 采用 multi-bit clock based RRIP 算法追踪每个 set 中 objects 的冷热程度，用于选择 object 进行驱逐。冷热数据分离是降低垃圾回收写放大的常用方法。FairyWREN 进一步将 FwSet 中每个 set 分为 hot 和 cold 两个 subsets（各 4KB 大小），分别存储到不同的 EU 中。特别地，非热点 objects 会被替换导致对应的 sets 被更频繁地更新，因此将热点和非热点 objects 分别放到 cold 和 hot subsets 中。
+
+- **DRAM 需求缩减优化：** 类似于 Kangaroo，将 keyspace 根据 key 静态分成多个独立的缓存分区，以节省每个索引项的比特长度。另外，通过增大 set size 来减小 FwSet 索引。FairyWREN 的 DRAM 开销分解分析如下，总体上每缓存一个 object 平均需要 8.3 bit 元数据。
+
+- LOC
+	- 当LOC满的时候，FairyWREN进行替换。驱逐时，由于segment和EU对齐，通过LRU或FIFO移除整个segment，即EU即可，完成WA=1的擦除。
+- SOC（关键设计）
+	- **朴素方法**。当FwSet或FwLog满的时候，需要进行垃圾回收。FairyWREN同样将其和缓存替换相结合。一个最朴素的方法是直接将末尾的EU驱逐，但冷热对象混杂会大大降低命中率。
+	- **FairyWREN的“嵌套打包”**。（1）**EU选择**。FairyWREN从FwSet和FwLog中选择一个EU进行垃圾回收。（2）**Set散列**。FairyWREN会将选中的EU的所有对象哈希散列为若干Set（如果EU在FwSet中，本身就已经是若干的Set）。（3）**Set重组**。对于这些Set，FairyWREN会检索出FwLog中位于Set的所有对象。将这些Set的对象重组为一个新的Set，其中可能会逐出不必要的对象。（4）**重写与擦除**。然后将重组的Set，重新追加写入到FwSet，并擦除上述EU。
+	- **如何work**？设计的最关键在于：合并了之前两个不同的过程，实现垃圾回收和缓存写入与驱逐/替换的协作。最坏的例子（如前面2.4所介绍）：LBAD的垃圾回收刚搬迁完一个Set，然后FwLog来了一个新对象后，又要马上被重写。在LBAD中，无法实现写入合并。而FairyWREN基于上述的嵌入打包，消除了很多不必要的写入。
+
+### 3.3 KwSet的冷热对象分离
 
 
 ## 个人评价
