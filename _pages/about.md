@@ -78,8 +78,8 @@ The work I have been engaged in recently:
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const dayAudio = document.getElementById("day-audio");
-    const nightAudio = document.getElementById("night-audio");
+    const dayAudio = document.getElementById("night-audio");
+    const nightAudio = document.getElementById("day-audio");
 
     // 初始设置，根据系统主题播放对应的音频
     function applyThemeBasedOnSystemPreference() {
