@@ -52,11 +52,12 @@ The work I have been engaged in recently:
             Firefly's Secret Base in Dream's Edge
         </div>
     </div>
+</div>
+
+
+<div class="row mt-3 day-content">
     <div class="col-sm mt-3 mt-md-0">
-        {% include audio.liquid path="assets/audio/neverhurt.mp3" controls=true autoplay=true %}
-        <div class="caption">
-            "If I Can Stop One Heart From Breaking"
-        </div>
+        {% include audio.liquid path="assets/audio/neverhurt.mp3" loop=true autoplay=true %}
     </div>
 </div>
 
@@ -67,12 +68,11 @@ The work I have been engaged in recently:
             Fly in the Sky with Firefly
         </div>
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include audio.liquid path="assets/audio/neversun.mp3" controls=true autoplay=true %}
-        <div class="caption">
-            "Had I Never Seen the Sun"
-        </div>
-    </div>
 </div>
 
+<div class="row mt-3 night-content">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include audio.liquid path="assets/audio/neversun.mp3" loop=true autoplay=true %}
+    </div>
+</div>
 
