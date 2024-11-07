@@ -57,7 +57,7 @@ The work I have been engaged in recently:
 
 <div class="row mt-3 day-content">
     <div class="col-sm mt-3 mt-md-0">
-        {% include audio.liquid path="assets/audio/neverhurt.mp3" loop=true controls=true autoplay=true id="day-audio" %}
+        {% include audio.liquid path="assets/audio/neverhurt.mp3" loop=true autoplay=true id="day-audio" %}
     </div>
 </div>
 
@@ -72,14 +72,14 @@ The work I have been engaged in recently:
 
 <div class="row mt-3 night-content">
     <div class="col-sm mt-3 mt-md-0">
-        {% include audio.liquid path="assets/audio/neversun.mp3" loop=true controls=true autoplay=true id="night-audio" %}
+        {% include audio.liquid path="assets/audio/neversun.mp3" loop=true autoplay=true id="night-audio" %}
     </div>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const dayAudio = document.getElementById("night-audio");
-    const nightAudio = document.getElementById("day-audio");
+    const dayAudio = document.getElementById("day-audio");
+    const nightAudio = document.getElementById("night-audio");
 
     // 初始设置，根据系统主题播放对应的音频
     function applyThemeBasedOnSystemPreference() {
