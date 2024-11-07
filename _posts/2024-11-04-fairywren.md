@@ -104,14 +104,31 @@ Kangaroo基于传统的LBAD接口。LBAD接口屏蔽了物理层，只暴露逻�
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/dram-recude.png" title="hot-cold-split" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/dram-reduce.png" title="hot-cold-split" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
     双缓冲区解决碎片化问题
 </div>
 
+
+- **设计：日志结构切片**。FwLog的object，FwSet的Set都是按照日志结构存储，分别需要object和Set的索引，DRAM开销很大。对日志结构存储空间进行 $2^n$ 切片可以减少n比特索引。（FwLog划分64份，FwSet划分8份）
+- **朴素方法**。一种朴素的思路是一个分片用一个EU/segment，然而EU数有限。不切实际。
+- **设计：共享EU/segment和碎片化问题**。所有切片共用一个sgement/EU，将DRAM中的segment分成 $2^n$ 份切片区域。各个切片将对应的区域写满后，再一次全部写到EU中。然而这会导致：部分区域可能提前写满，而其他区域没写满时就得写回EU，导致碎片化问题。
+- **设计：双缓冲区**。FairyWREN采用了双缓冲区来延缓这个问题，写的快的区域，可以写入到副本缓冲区中的新区域，起到一定的“快”等”慢“的作用。等主缓冲区尽可能写满后，就写回到EU中。（效果很好，将碎片化问题限制在了1%）
 - **DRAM 需求缩减优化：** 类似于 Kangaroo，将 keyspace 根据 key 静态分成多个独立的缓存分区，以节省每个索引项的比特长度。另外，通过增大 set size 来减小 FwSet 索引。FairyWREN 的 DRAM 开销分解分析如下，总体上每缓存一个 object 平均需要 8.3 bit 元数据。
+- **设计：更大的Set**。此外，FairyWREN还通过增大 Set大小来减小 FwSet 索引。（作者讨论了更大的Set不会带来写放大可控，即5%）
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/posts/fairywren/dram-result.png" title="hot-cold-split" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    DRAM开销定量对比
+</div>
+
+最后，FairyWREN 使用的 DRAM 仅比 Kangaroo 多 19%，但后续会看到比 Kangaroo带来了12.5x写入量的减少。
 
 
 ## 个人评价
