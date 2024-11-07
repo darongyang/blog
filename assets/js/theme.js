@@ -54,13 +54,19 @@ let applyTheme = () => {
 
   document.documentElement.setAttribute("data-theme", theme);
 
-  if (theme === "dark") {
-    dayAudio.pause();
-    nightAudio.play();
-  } else {
+  console.log(dayAudio)
+  console.log(nightAudio)
+
+  if (dayAudio !=null && nightAudio!=null){
+    if (theme === "dark" ) {
+      dayAudio.pause();
+      nightAudio.play();
+    } else {
       nightAudio.pause();
       dayAudio.play();
+    }
   }
+
 
   // Add class to tables.
   let tables = document.getElementsByTagName("table");
