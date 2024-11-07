@@ -54,4 +54,12 @@ The work I have been engaged in recently:
     Firefly's Secret Base in Dream's Edge
 </div>
 
-{% include audio.liquid path="assets/audio/neverheart.mp3" controls=true autoplay=true %}
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include audio.liquid path="assets/audio/neverheart.mp3" autoplay=true %}
+    </div>
+</div>
+<div class="caption">
+    If I Can Stop One Heart From Breaking
+</div>
+
