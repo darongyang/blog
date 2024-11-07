@@ -48,36 +48,31 @@ The work I have been engaged in recently:
 <div class="row mt-3 day-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/posts/honkai-2.png" title="architecture" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            Firefly's Secret Base in Dream's Edge
+        </div>
     </div>
-</div>
-<div class="caption day-content">
-    Firefly's Secret Base in Dream's Edge
-</div>
-
-<div class="row mt-3 day-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include audio.liquid path="assets/audio/neverhurt.mp3" controls=true autoplay=true %}
+        <div class="caption">
+            If I Can Stop One Heart From Breaking
+        </div>
     </div>
-</div>
-<div class="caption day-content">
-    If I Can Stop One Heart From Breaking
 </div>
 
 <div class="row mt-3 night-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/posts/honkai.png" title="architecture" class="img-fluid rounded z-depth-1" %}
+        <div class="caption">
+            Fly in the Sky with Firefly
+        </div>
     </div>
-</div>
-<div class="caption night-content">
-    Fly in the Sky with Firefly 
-</div>
-
-<div class="row mt-3 night-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include audio.liquid path="assets/audio/neversun.mp3" controls=true autoplay=true %}
+        <div class="caption">
+            Had I Never Seen the Sun
+        </div>
     </div>
 </div>
-<div class="caption night-content">
-    Had I Never Seen the Sun
-</div>
+
 
