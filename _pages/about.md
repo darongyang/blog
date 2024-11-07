@@ -56,7 +56,7 @@ The work I have been engaged in recently:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include audio.liquid path="assets/audio/neverheart.mp3" autoplay=true %}
+        {% include audio.liquid path="assets/audio/neverheart.mp3" controls=true %}
     </div>
 </div>
 <div class="caption">
