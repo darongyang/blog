@@ -11,7 +11,7 @@ images:
 
 - <a href="https://www.bilibili.com/video/BV19M411T7S7"> 凸优化 中科大 凌青老师 | bilibili </a>
 - <a href="https://blog.csdn.net/qq_26565435/article/details/127000172"> 凸优化学习笔记（个人学习记录汇总） | CSDN </a>
-- 凸优化学习笔记（很好，但遗憾不全） | Github Download 
+- 凸优化学习笔记（很好，但遗憾不全）Github Download
 	- <a href="https://darongyang.github.io/blog/assets/pdf/Convex_Sets.pdf"> 凸集部分 </a>
 	- <a href="https://darongyang.github.io/blog/assets/pdf/Convex_Function.pdf"> 凸函数部分 </a>
 	- <a href="https://darongyang.github.io/blog/assets/pdf/Convex_Problem.pdf"> 凸问题部分 </a>
