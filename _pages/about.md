@@ -76,7 +76,7 @@ The work I have been engaged in recently:
     </div>
 </div>
 
-<script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", function() {
     const dayAudio = document.getElementById("night-audio");
     const nightAudio = document.getElementById("day-audio");
@@ -92,38 +92,5 @@ document.addEventListener("DOMContentLoaded", function() {
             nightAudio.pause();
         }
     }
-    // 切换主题时播放对应音频
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", newTheme);
-
-        if (newTheme === "dark") {
-            dayAudio.pause();
-            nightAudio.play();
-        } else {
-            nightAudio.pause();
-            dayAudio.play();
-        }
-    }
-
-    // 初始调用，检查并设置系统主题
-    applyThemeBasedOnSystemPreference();
-
-    // 监听系统主题变更（适用于系统主题变化时）
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", (e) => {
-        if (e.matches) {
-            document.documentElement.setAttribute("data-theme", "dark");
-            dayAudio.pause();
-            nightAudio.play();
-        } else {
-            document.documentElement.setAttribute("data-theme", "light");
-            nightAudio.pause();
-            dayAudio.play();
-        }
-    });
-
-    // 为手动切换主题添加事件监听器
-    document.getElementById("theme-toggle-btn").addEventListener("click", toggleTheme);
 });
-</script>
+</script> -->

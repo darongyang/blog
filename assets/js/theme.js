@@ -24,6 +24,8 @@ let setThemeSetting = (themeSetting) => {
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
   let theme = determineComputedTheme();
+  const dayAudio = document.getElementById("night-audio");
+  const nightAudio = document.getElementById("day-audio");
 
   transTheme();
   setHighlight(theme);
@@ -51,6 +53,14 @@ let applyTheme = () => {
   }
 
   document.documentElement.setAttribute("data-theme", theme);
+
+  if (theme === "dark") {
+    dayAudio.pause();
+    nightAudio.play();
+  } else {
+      nightAudio.pause();
+      dayAudio.play();
+  }
 
   // Add class to tables.
   let tables = document.getElementsByTagName("table");
