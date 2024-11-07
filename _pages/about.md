@@ -53,3 +53,5 @@ The work I have been engaged in recently:
 <div class="caption">
     Firefly's Secret Base in Dream's Edge
 </div>
+
+{% include audio.liquid path="assets/audio/neverheart.mp3" controls=true autoplay=true %}
