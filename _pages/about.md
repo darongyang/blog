@@ -76,7 +76,7 @@ The work I have been engaged in recently:
     </div>
 </div>
 
-<!-- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     const dayAudio = document.getElementById("night-audio");
     const nightAudio = document.getElementById("day-audio");
@@ -93,4 +93,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
-</script> -->
+</script> 
