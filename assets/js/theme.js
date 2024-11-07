@@ -24,8 +24,8 @@ let setThemeSetting = (themeSetting) => {
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
   let theme = determineComputedTheme();
-  const dayAudio = document.getElementById("night-audio");
-  const nightAudio = document.getElementById("day-audio");
+  const dayAudio = document.getElementById("day-audio");
+  const nightAudio = document.getElementById("night-audio");
 
   transTheme();
   setHighlight(theme);
@@ -54,8 +54,6 @@ let applyTheme = () => {
 
   document.documentElement.setAttribute("data-theme", theme);
 
-  console.log(dayAudio)
-  console.log(nightAudio)
 
   if (dayAudio !=null && nightAudio!=null){
     if (theme === "dark" ) {
