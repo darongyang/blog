@@ -9,6 +9,8 @@ images:
   slider: true
 ---
 
+学习进度:13/55
+
 - <a href="https://www.bilibili.com/video/BV19M411T7S7"> 凸优化 中科大 凌青老师 | bilibili </a>
 - <a href="https://blog.csdn.net/qq_26565435/article/details/127000172"> 凸优化学习笔记（个人学习记录汇总） | CSDN </a>
 - 凸优化学习笔记（很好，但遗憾不全）Github Download
