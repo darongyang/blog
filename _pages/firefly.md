@@ -26,6 +26,12 @@ social: false# includes social icons at the bottom of the page
     </div>
 </div>
 
+
+<div class="row mt-3 night-content">
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112649375318306&bvid=BV1qQgkeeEhR&cid=500001589435870&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
+    </iframe>
+</div>
+
 <div class="row mt-3 night-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/posts/honkai.png" title="Fly with Firefly" class="img-fluid rounded z-depth-1" %}
