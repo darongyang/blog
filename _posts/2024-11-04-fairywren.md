@@ -9,6 +9,8 @@ images:
   slider: true
 ---
 
+最新事情有点多，没时间更新，请先参考我的论文解读PPT：<a href="https://darongyang.github.io/blog/assets/pdf/FairyWREN-v1.pdf"> FairyWREN-Reading-PPT </a>
+
 发现CMU的flash cache三部曲（cachelib->kangaroo->fairywren）都发在osdi/sosp上，工作的连续性还是让我深感震惊和佩服。CMU真强 :-)
 
 正在阅读中，后续推送一下......
