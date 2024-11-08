@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 初始设置，根据系统主题播放对应的音频
     function applyThemeBasedOnSystemPreference() {
         const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        consule.log(isDarkMode)
+        console.log(isDarkMode)
         if (isDarkMode) {
             nightAudio.play();
             dayAudio.pause();
