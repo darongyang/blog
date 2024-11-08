@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Firefly
+title: firefly
 permalink: /firefly/
 nav: true
 nav_order: 4
