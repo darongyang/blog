@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Convex Optimization Learning 
+title: Convex Optimization Learning Links
 date: 2024-11-06 21:34:00
 description: some links for convex optimization learning and exam
 tags: class
