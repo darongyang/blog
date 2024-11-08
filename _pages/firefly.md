@@ -20,7 +20,7 @@ social: false# includes social icons at the bottom of the page
 </div>
 
 
-<div class="row mt-3 day-content">
+<div class="row justify-content-center mt-3 day-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include audio.liquid path="assets/audio/neverhurt.mp3" loop=true autoplay=true controls=true id="day-audio" %}
     </div>
@@ -39,7 +39,7 @@ social: false# includes social icons at the bottom of the page
     </div>
 </div>
 
-<div class="row mt-3 night-content">
+<div class="row justify-content-center mt-3 night-content">
     <div class="col-sm mt-3 mt-md-0">
         {% include audio.liquid path="assets/audio/neversun.mp3" loop=true autoplay=true controls=true id="night-audio" %}
     </div>
