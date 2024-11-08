@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 # subtitle: A paper a day, the reject away~
-subtitle: New to Storage! Star Rail Firefly Lover!
+subtitle: New to Storage! Star Rail <a href="https://darongyang.github.io/blog/firefly/"> Firefly </a> Lover! 
 
 profile:
   align: right
@@ -31,8 +31,8 @@ The work I have been engaged in recently:
   - [ ] and etc
 - Reading and Summary in `Flash Cache`
   - [ ] CacheLib (OSDI'20)
-  - [ ] Kangaroo (SOSP'21) -> Scanning Now.
-  - [ ] FairyWREN (OSDI'24)
+  - [ ] Kangaroo (SOSP'21)
+  - [ ] FairyWREN (OSDI'24) -> Scanning Now.
   - [ ] CSAL (EuroSys'24) -> √ Finish Scanning. To Update.
   - [ ] Baleen (FAST'24)
   - [ ] Austere (ATC'20)
