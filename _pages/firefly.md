@@ -28,15 +28,14 @@ social: false# includes social icons at the bottom of the page
 
 
 <div class="row justify-content-center mt-3 day-content">
-    <div class="col-sm mt-3 mt-md-0" style="height: 100%;">
-        <iframe 
-            src="//player.bilibili.com/player.html?isOutside=true&aid=1102909331&bvid=BV1eA4m1F7tp&cid=1502067081&p=1&autoplay=0" 
+    <div class="col-sm mt-3 mt-md-0" style="width: 100vw;">
+        <iframe             src="//player.bilibili.com/player.html?isOutside=true&aid=1102909331&bvid=BV1eA4m1F7tp&cid=1502067081&p=1&autoplay=0" 
             scrolling="no" 
             border="0" 
             frameborder="no" 
             framespacing="0" 
             allowfullscreen="true" 
-            style="width: 100%; height: 100%;"
+            style="width: 100%; height: auto;"
         ></iframe>
     </div>
 </div>
@@ -58,15 +57,14 @@ social: false# includes social icons at the bottom of the page
 </div>
 
 <div class="row justify-content-center mt-3 night-content">
-    <div class="col-sm mt-3 mt-md-0" style="height: 100%;">
-        <iframe 
-            src="//player.bilibili.com/player.html?isOutside=true&aid=112649375318306&bvid=BV1qQgkeeEhR&cid=500001589435870&p=1&autoplay=0" 
+    <div class="col-sm mt-3 mt-md-0" style="width: 100vw;">
+        <iframe             src="//player.bilibili.com/player.html?isOutside=true&aid=112649375318306&bvid=BV1qQgkeeEhR&cid=500001589435870&p=1&autoplay=0" 
             scrolling="no" 
             border="0" 
             frameborder="no" 
             framespacing="0" 
             allowfullscreen="true" 
-            style="width: 100%; height: 100%;"
+            style="width: 100%; height: auto;"
         ></iframe>
     </div>
 </div>
