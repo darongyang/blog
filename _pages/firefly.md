@@ -59,7 +59,7 @@ social: false# includes social icons at the bottom of the page
 </div>
 
 
-<div class="row justify-content-center mt-3 night-content" style="height: 100vh;">
+<div class="row justify-content-center mt-3 night-content" style="height: 40vh;">
     <div class="col-sm mt-3 mt-md-0" style="height: 100%; padding: 0;">
         <iframe 
             src="//player.bilibili.com/player.html?isOutside=true&aid=112649375318306&bvid=BV1qQgkeeEhR&cid=500001589435870&p=1&autoplay=0" 
