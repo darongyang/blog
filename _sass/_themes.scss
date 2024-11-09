@@ -58,7 +58,11 @@
 
   .night-content {
     display: none;
-}
+  }
+
+  .day-content {
+    display: block;
+  }
 
   #back-to-top {
     color: var(--global-back-to-top-text-color);
@@ -69,6 +73,8 @@
     width: $back-to-top-width;
     z-index: $back-to-top-z-index;
   }
+
+
 }
 
 html[data-theme="dark"] {
