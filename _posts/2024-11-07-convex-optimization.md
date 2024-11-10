@@ -12,6 +12,7 @@ images:
 学习进度:22/55
 
 考试重点：
+
 - KKT条件（就是直接让你写KKT条件都有什么）
 - 单纯形法
 - 鞍点定理的证明
@@ -20,6 +21,7 @@ images:
 - 剩下的好像还有证明凸集
 
 复习links：
+
 - <a href="https://www.bilibili.com/video/BV19M411T7S7"> 凸优化 中科大 凌青老师 | bilibili </a>
 - <a href="https://blog.csdn.net/qq_26565435/article/details/127000172"> 凸优化学习笔记（个人学习记录汇总） | CSDN （但遗憾不全） </a>
 - <a href="https://darongyang.github.io/blog/assets/pdf/convex-hitsz.pdf"> 凸优化教学板书 | HITSZ（不全，从凸函数-保凸变换开始） </a>
