@@ -79,7 +79,7 @@ social: false# includes social icons at the bottom of the page
     </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 
 <script>
