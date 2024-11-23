@@ -30,17 +30,13 @@ The work I have been engaged in recently:
   - [ ] CachedAttention (ATC'24)
   - [ ] and etc
 - Reading and Summary in `Flash Cache`
-  - [ ] CacheLib (OSDI'20)
-  - [ ] Kangaroo (SOSP'21)
-  - [ ] FairyWREN (OSDI'24) -> Scanning Now.
   - [ ] CSAL (EuroSys'24) -> √ Finish Scanning. To Update.
   - [ ] Baleen (FAST'24)
   - [ ] Austere (ATC'20)
   - [ ] and etc
 - Reading and Summary in `Partital FTL with Learning`
-  - [ ] LeaFTL(ASPLOS'23) -> May Skim Next Week
-  - [ ] LearnedFTL(HPCA'24)
+  - [ ] LeaFTL(ASPLOS'23) 
+  - [ ] LearnedFTL(HPCA'24) -> Skimming Now
   - [ ] and etc
 - Try to Find Other Area on `Traditional Flash Storage`
   - ZNS or High-Density SSD or Dedup? However, I think it's hard :-)
-- May Participate in a Work about MOE?
