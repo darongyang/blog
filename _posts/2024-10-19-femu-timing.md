@@ -4,7 +4,7 @@ title: FEMU Timing Model Analysis
 date: 2024-10-18 21:34:00
 description: learn about FEMU Timing Model
 tags: ssd-simulator
-categories: sample-posts
+categories: sample-posts external-services
 featured: true
 giscus_comments: true
 images:

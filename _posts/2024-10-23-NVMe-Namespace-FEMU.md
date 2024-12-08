@@ -4,7 +4,7 @@ title: NVMe Namespace and FEMU
 date: 2024-10-22 21:34:00
 description: learn about NVMe namespace and code in femu
 tags: ssd-simulator
-categories: sample-posts
+categories: sample-posts external-services
 featured: false
 giscus_comments: true
 images:
