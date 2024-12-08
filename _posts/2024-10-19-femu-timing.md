@@ -6,6 +6,7 @@ description: learn about FEMU Timing Model
 tags: ssd-simulator
 categories: sample-posts
 featured: true
+giscus_comments: true
 images:
   slider: true
 ---

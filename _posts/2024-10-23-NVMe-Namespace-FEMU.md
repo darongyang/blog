@@ -6,6 +6,7 @@ description: learn about NVMe namespace and code in femu
 tags: ssd-simulator
 categories: sample-posts
 featured: false
+giscus_comments: true
 images:
   slider: true
 ---
