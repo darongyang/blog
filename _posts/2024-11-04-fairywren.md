@@ -4,7 +4,7 @@ title: "Scanning OSDI'24 | FairyWREN: A Sustainable Cache for Emerging Write-Rea
 date: 2024-11-03 21:34:00
 description: Fairywren apploy flash-cache on zns to reduce device WA and carbon emission
 tags: flash-cache, osdi, scanning, paper
-categories: sample-posts external-services
+categories: sample-posts
 giscus_comments: true
 images:
   slider: true
